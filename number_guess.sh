@@ -18,6 +18,7 @@ fi
 
 # commit3/ feat: add guessing loop
 
+
 SECRET=$(( RANDOM % 1000 + 1 ))
 GUESSES=0
 
@@ -41,6 +42,8 @@ do
     echo "It's lower than that, guess again:"
   else
     echo "You guessed it in $GUESSES tries. The secret number was $SECRET. Nice job!"
+#commit 4/ refactor: save game results    
+    $PSQL "UPDATE users SET games_played = games_played + 1, best_game = CASE WHEN best_game IS NULL OR $GUESSES < best_game THEN $GUESSES ELSE best_game END WHERE username='$USERNAME'" > /dev/null
     break
   fi
 done
