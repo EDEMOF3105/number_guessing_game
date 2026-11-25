@@ -16,7 +16,7 @@ else
   echo "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
 fi
 
-# commit3/ feat: welcome new and returning users
+# commit3/ feat: add guessing loop
 
 SECRET=$(( RANDOM % 1000 + 1 ))
 GUESSES=0
